@@ -1,5 +1,7 @@
 import os
 
-os.mkdir("./films")
-for i in range(18):
-    os.mkdir("./films/" + str(i))
+# os.mkdir("./divide/users")
+for i in range(500):
+    path = "./divide/users/" + str(i)
+    if not os.path.exists(path=path):
+        os.mkdir(path=path)
