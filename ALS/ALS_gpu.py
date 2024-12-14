@@ -45,8 +45,8 @@ def LFM_grad_desc(R, K=10, max_iter=100000, alpha=0.0001, lamda=0.002):
         eR = (predR - R) * (R > 0).float()  # 只考虑评分矩阵中大于0的部分
         
         # 更新P和Q的梯度
-        P_grad = torch.mm(eR, Q.T) + 2 * lamda * P  # P的梯度
-        Q_grad = torch.mm(eR.T, P) + 2 * lamda * Q.T  # Q的梯度
+        P_grad = torch.mm(eR, Q.T) + 2 * lamda * P  # P的梯度, L1正则化
+        Q_grad = torch.mm(eR.T, P) + 2 * lamda * Q.T  # Q的梯度, L1正则化
         
         # 更新P和Q
         P -= alpha * P_grad
