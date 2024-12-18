@@ -31,15 +31,17 @@ for i in range(len(scores)):
     zero_indices = np.random.choice(cols, num_zeros, replace=False)
     matrix[i, zero_indices] = 0
 
-matrix1 = matrix
+print(matrix)
+
+matrix1 = matrix.copy()
 for i in range(len(scores)):
     for j in range(len(matrix1[i])):
         if matrix1[i][j] != 0:
             matrix1[i][j] = 1
-
+print("array1:")
 array1 = np.array(matrix1)
+print(array1)
 
-print(len(matrix))
 print(len(matrix[0]))
 print(len(rating_column))
 
@@ -47,21 +49,25 @@ for i in range(len(matrix)):
     for j in range(len(matrix[i])):
         if matrix[i][j] == 0:
             matrix[i][j] = rating_column[j]
+
+
 # 假设你有一个二维数组
 array = np.array(matrix)
+print("array:")
 print(array)
 # 指定输出文件的名称
 output_file = 'output.txt'
  
 # 打开文件以写入模式
-def writefile(output_file, array):
+def writefile(output_file, array3):
     with open(output_file, 'w') as f:
         # 遍历二维数组的每一行
-        for row in array:
+        for row in array3:
             # 将行中的元素转换为字符串，并使用空格连接
             line = ' '.join(map(str, row))
             # 写入文件并换行
             f.write(line + '\n')
+
 writefile(output_file, array)
 writefile("kanguo.txt", array1)
 print(f"数组已成功写入到 {output_file} 文件中。")
