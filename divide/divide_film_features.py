@@ -32,9 +32,12 @@ def write_file(file_path, features):
 arrary = two_d_array
 tmp = []
 
-for i in range(450):
+for i in range(7169):
     tmp.append(arrary[i])
     if (i+1) % 25 == 0:
         num = ((i+1) // 25) - 1
         write_file("divide/films/" + str(num) + "/filmfeatures.txt", tmp)
         tmp = []
+
+if len(tmp) != 0:
+    write_file("divide/films/" + str(286) + "/filmfeatures.txt", tmp) 

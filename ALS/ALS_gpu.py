@@ -20,15 +20,16 @@ with open(input_file, 'r') as f:
 R = torch.tensor(array, dtype=torch.float32).cuda()
 
 print(R)
+print(R.shape)
 
 # 给定超参数
-K = 10 # 隐特征向量维度
-max_iter = 2000 # 最大迭代次数
-alpha = 0.0002 # 迭代步长
+K = 20 # 隐特征向量维度
+max_iter = 200 # 最大迭代次数
+alpha = 0.00002 # 迭代步长
 lamda = 0.004 # 正则化系数
 
 # 核心算法
-def LFM_grad_desc(R, K=10, max_iter=200000, alpha=0.0001, lamda=0.002):
+def LFM_grad_desc(R, K=1000, max_iter = 10, alpha = 10, lamda = 10):
     M, N = R.shape  # 获取矩阵的维度
     
     # P, Q 初始化
@@ -55,7 +56,7 @@ def LFM_grad_desc(R, K=10, max_iter=200000, alpha=0.0001, lamda=0.002):
         # 计算当前损失函数（包括正则化）
         cost = (eR ** 2).sum() + lamda * (P ** 2).sum() + lamda * (Q ** 2).sum()
         
-        if cost < 0.000001:
+        if cost < 0.0001:
             break
 
     return P, Q.T, cost

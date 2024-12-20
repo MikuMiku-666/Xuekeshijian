@@ -4,12 +4,12 @@ import math
 import numpy as np
 
 # 读取 CSV 文件
-df = pd.read_csv('/data/lizheyan/Workspace/Xuekeshijian/crawl/updated_douban_annime.csv')
+df = pd.read_csv('/data/lizheyan/Workspace/Xuekeshijian/crawl/cleaned_file2.csv')
 total_people = 500
 # 获取 rating 列
 rating_column = df['rating']
 print(rating_column)
-matrix = np.random.randint(0, 1, size=(total_people, 450))
+matrix = np.random.randint(0, 1, size=(total_people, 7169))
 
 # 假设的均值和标准差
 std_dev_score = 1
@@ -25,7 +25,7 @@ for i in range(len(rating_column)):
     # print(len(scores))
     for j in range(len(scores)):
         matrix[j][i] = scores[j]
-cols = 450
+cols = 7169
 for i in range(len(scores)):
     num_zeros = int(cols * 0.7)
     zero_indices = np.random.choice(cols, num_zeros, replace=False)
