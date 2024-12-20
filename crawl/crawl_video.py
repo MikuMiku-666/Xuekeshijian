@@ -12,15 +12,17 @@ headers = {
 }
 
 # 读取 CSV 文件
-df = pd.read_csv('douban_annime_plus.csv')
+df = pd.read_csv('douban_annime_plus2.csv')
 
 # 创建一个文件夹来保存图片
 # os.makedirs('images', exist_ok=True)
 
 # 提取 douban_link 列
-print(df['douban_link'].tolist()[0])
-douban_links = df['douban_link'].tolist()[616:]
-titles = df['title'].tolist()
+# print(df['douban_link'].tolist()[894])
+# print(df.at[0,'title'])
+# print(df.at[1,'title'])
+douban_links = df['douban_link'].tolist()[4246:]
+titles = df['title'].tolist
 # douban_links = ["https://movie.douban.com/subject/7152908/"]
 # 初始化新列 video_url
 df['id'] = ''
@@ -41,7 +43,7 @@ df['also_known_as'] = ''
 df['genre'] = ''
 # df.drop(columns=['creator', 'tags'], inplace=True)      
 # 打印所有链接
-i = 1064
+i = 6539
 # print(df.iloc[i])
 for link in douban_links:
     df.at[i,'id'] = i
@@ -49,7 +51,7 @@ for link in douban_links:
         response = requests.get(link, headers=headers)
         response.encoding = "utf-8"
         print(response.status_code)
-        print(response.text)
+        # print(response.text)
         soup = BeautifulSoup(response.text, 'html.parser')
         # with open('soup.txt', 'w', encoding='utf-8') as file:
         #         file.write(soup.prettify())
@@ -164,7 +166,7 @@ for link in douban_links:
             writer = csv.writer(file)
             if file.tell() == 0:
                 writer.writerow(['id','title', 'douban_link', 'rating','year','image','video_url', 'summary', 'country', 'language', 'episode_duration', 'episode_count', 'director', 'scriptwriter', 'cast', 'official_website', 'also_known_as', 'genre'])
-            writer.writerow([df.at[i, 'id'], df.at[i-448,'title'],link,df.at[i,'rating'],df.at[i,'year'],df.at[i,'image'],df.at[i, 'video_url'], df.at[i, 'summary'], df.at[i, 'country'], df.at[i, 'language'], df.at[i, 'episode_duration'], df.at[i, 'episode_count'], df.at[i, 'director'], df.at[i, 'scriptwriter'], df.at[i, 'cast'], df.at[i, 'official_website'], df.at[i, 'also_known_as'], df.at[i, 'genre']])
+            writer.writerow([df.at[i, 'id'], df.at[i-2293,'title'],link,df.at[i,'rating'],df.at[i,'year'],df.at[i,'image'],df.at[i, 'video_url'], df.at[i, 'summary'], df.at[i, 'country'], df.at[i, 'language'], df.at[i, 'episode_duration'], df.at[i, 'episode_count'], df.at[i, 'director'], df.at[i, 'scriptwriter'], df.at[i, 'cast'], df.at[i, 'official_website'], df.at[i, 'also_known_as'], df.at[i, 'genre']])
             print("写入成功")
     try:
         response = requests.get(image_url)
