@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 读取CSV文件
-df = pd.read_csv('Xuekeshijian/crawl/updated_douban_annime.csv')
+df = pd.read_csv('/home/hadoop/workspace/Xuekeshijian/crawl/updated_douban_annime.csv')
 
 # 检查年份和单集时长列，删除缺失的行
 # 这里假设年份和单集时长的缺失值被表示为NaN或者空字符串
