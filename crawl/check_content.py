@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 读取CSV文件
-df = pd.read_csv('updated_file1.csv')
+df = pd.read_csv('updated_douban_annime.csv')
 
 # 检查id是否连续
 expected_id = df['id'].min()
@@ -13,9 +13,9 @@ for index, row in df.iterrows():
 
 # 检查year是否有缺失值
 # 找出year列缺失值的id、title和douban_link
-missing_year_ids = df[df['year'].isnull()][['id', 'title', 'douban_link']]
+missing_rating_ids = df[df['rating'].isnull()][['id', 'title', 'douban_link']]
 
 # 将这些id、title和douban_link写入一个新的CSV文件
-missing_year_ids.to_csv('missing_year_ids.csv', index=False)
+missing_rating_ids.to_csv('missing_rating_ids.csv', index=False)
 
-print(f"缺失年份的id、title和douban_link已写入文件：missing_year_ids.csv")
+print(f"缺失年份的id、title和douban_link已写入文件：missing_rating_ids.csv")
