@@ -11,14 +11,11 @@ for index, row in df.iterrows():
         break
     expected_id += 1
 
-# 检查rating是否有缺失值
-# 找出rating列缺失值的id
-missing_rating_ids = df[df['rating'].isnull()]['id']
+# 检查year是否有缺失值
+# 找出year列缺失值的id、title和douban_link
+missing_year_ids = df[df['year'].isnull()][['id', 'title', 'douban_link']]
 
-# 将这些id写入一个新的CSV文件
-missing_rating_ids.to_csv('missing_rating_ids.csv', index=False)
+# 将这些id、title和douban_link写入一个新的CSV文件
+missing_year_ids.to_csv('missing_year_ids.csv', index=False)
 
-print(f"缺失rating值的id已写入文件：missing_rating_ids.csv")
-
-# 如果需要，可以将检查结果保存到新的CSV文件
-# df.to_csv('checked_file.csv', index=False)
+print(f"缺失年份的id、title和douban_link已写入文件：missing_year_ids.csv")
