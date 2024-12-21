@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 指定 CSV 文件路径
-file_path = r'D:\courses\third\学科实践三\大作业\spider\Xuekeshijian\crawl\updated_douban_annime.csv'
+file_path = r'/home/hadoop/workspace/Xuekeshijian/crawl/cleaned_file_int_year.csv'
 
 # 读取 CSV 文件
 df = pd.read_csv(file_path)
