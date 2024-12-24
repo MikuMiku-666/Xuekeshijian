@@ -11,6 +11,7 @@ with open(Q_path, 'r') as file:
 matrix_np = np.array(matrix)
 
 row, col = matrix_np.shape  # 向量维度
+print(col)
 index = faiss.IndexFlatL2(col)  # 创建索引
 
 index.add(matrix_np)
